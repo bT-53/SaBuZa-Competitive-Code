@@ -5,15 +5,18 @@ using namespace std;
 
 class segTree{
     private:
-
-    //int N;
+    //int N = 400005;
     bool isLazy[N];
     long long st[N],ar[N],lazy[N];
 
+    segTree(){
+        build (1,1,N);
+    }
+/*
     segTree(int N)N(N){
         build(1,1,N);
     }
-
+*/
     void build(int idx,int l,int r){
         if (r==l){
             st[idx] = ar[l];
@@ -25,8 +28,6 @@ class segTree{
     }
 
     void update(int idx,int l,int r,int a,int b,long long val){
-        if (r<a||l>b)
-            return ;
         if (isLazy[idx]){
             st[idx] = lazy[idx];
             if (r!=l){
@@ -38,6 +39,9 @@ class segTree{
             lazy[idx] = 0;
             isLazy[idx] = false;
         }
+        if (r<a||l>b)
+            return ;
+
         if (l>=a&&r<=b){
             st[idx] = val;
             if (r!=l){

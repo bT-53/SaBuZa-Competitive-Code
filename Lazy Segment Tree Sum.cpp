@@ -33,7 +33,6 @@ long long query(int idx,int l,int r,int a,int b){
 }
 
 void update(int idx,int l,int r,int a,int b,long long val){
-    if (r<a||l>b) return ;
     if (lazy[idx]){
         st[idx] += lazy[idx]*(r-l+1);
         if (r!=l){
@@ -42,6 +41,7 @@ void update(int idx,int l,int r,int a,int b,long long val){
         }
         lazy[idx] = 0;
     }
+    if (r<a||l>b) return ;
     if (l>=a&&r<=b){
         st[idx] += val*(r-l+1);
         if (r!=l){

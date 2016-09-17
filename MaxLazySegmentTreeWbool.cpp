@@ -17,8 +17,6 @@ void build(int idx,int l,int r){
 }
 
 void update(int idx,int l,int r,int a,int b,long long val){
-    if (r<a||l>b)
-        return ;
     if (isLazy[idx]){
         st[idx] = lazy[idx];
         if (r!=l){
@@ -30,6 +28,9 @@ void update(int idx,int l,int r,int a,int b,long long val){
         lazy[idx] = 0;
         isLazy[idx] = false;
     }
+    if (r<a||l>b)
+        return ;
+
     if (l>=a&&r<=b){
         st[idx] = val;
         if (r!=l){

@@ -34,7 +34,6 @@ class segment{
     }
 
     void update (int idx,int l,int r,int a,int b ,int val ){
-        if (l>=b||r<=a) return ;
         if (lazy[idx] != 0){
             st[idx] += (b-a+1)*lazy[idx];
             if (r-l>1){
@@ -43,6 +42,7 @@ class segment{
             }
             lazy[idx] = 0;
         }
+        if (l>=b||r<=a) return ;
         if (r-l<=1){
             st[idx] = val;
             return;
